@@ -19,11 +19,13 @@
 
   body {
     @apply antialiased;
+    background: linear-gradient(180deg, #F5ECFF 0%, #FFEFF7 50%, #F4FBFF 100%);
   }
 }
 
-/* Custom utility classes for shadcn/ui patterns */
+/* Custom utility classes */
 @layer utilities {
+  /* In/Out animations (kept for consistency) */
   .animate-in {
     animation-name: animateIn;
     animation-duration: 350ms;
@@ -43,4 +45,30 @@
     --tw-exit-translate-x: initial;
     --tw-exit-translate-y: initial;
   }
+
+  /* Soft shadow for cozy UI */
+  .shadow-soft {
+    box-shadow: 0 10px 30px rgba(168, 85, 247, 0.15), 0 6px 12px rgba(236, 72, 153, 0.12);
+  }
+
+  /* Floating clouds */
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
+  }
+  .animate-float { animation: float 10s ease-in-out infinite; }
+  .animate-float-slow { animation: float 14s ease-in-out infinite; }
+  .animate-float-slower { animation: float 18s ease-in-out infinite; }
+
+  /* Sparkle twinkle */
+  @keyframes twinkle { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
+  .animate-twinkle { animation: twinkle 2.6s ease-in-out infinite; }
+
+  /* Gentle text glow */
+  @keyframes glowPulse {
+    0%, 100% { text-shadow: 0 0 20px rgba(236, 72, 153, 0.25), 0 0 40px rgba(59, 130, 246, 0.15); }
+    50% { text-shadow: 0 0 28px rgba(236, 72, 153, 0.35), 0 0 60px rgba(59, 130, 246, 0.25); }
+  }
+  .animate-glow { animation: glowPulse 3.2s ease-in-out infinite; }
 }
